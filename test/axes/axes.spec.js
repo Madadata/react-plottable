@@ -9,11 +9,11 @@ import {
 import expect from 'expect';
 
 describe('Axes Test', () => {
+  const linearScale = createScale('linear');
+  const timeScale = createScale('time');
+  const categoryScale = createScale('category');
 
   describe('Func: createAxis', () => {
-    const linearScale = createScale('linear');
-    const timeScale = createScale('time');
-    const categoryScale = createScale('category');
 
     it('should create the right axes if inputs are right', () => {
       const numericAxis = createAxis(linearScale, 'bottom', 'numeric');
@@ -46,13 +46,34 @@ describe('Axes Test', () => {
     });
 
     it('should throw error if type is not supported', () => {
-      const createHelloAxis = () => {
+      const createHelloAxisExecutor = () => {
         createAxis(linearScale, 'bottom', 'hello');
       };
 
-      expect(createHelloAxis).toThrow();
+      expect(createHelloAxisExecutor).toThrow();
     })
 
+  });
+
+  describe('Func: createAxes', () => {
+    const xConfig = {
+      xScale: categoryScale,
+      xOrientation: 'bottom',
+      xType: 'category',
+    };
+    const yConfig = {
+      yScale: linearScale,
+      yOrientation: 'left',
+      yType: 'numeric',
+    };
+
+    it('should throw error if parameters are not given', () => {
+      const createNoneAxesExecutor = () => { createAxes(); };
+      const createOneAxesExecutor = () => { createAxis(xScale); };
+
+      expect(createNoneAxesExecutor).toThrow();
+      expect(createOneAxesExecutor).toThrow();
+    });
   });
 
 });

@@ -34,7 +34,7 @@ module.exports = function(config) {
       module: {
         // run babel loader for our tests
         loaders: [
-          { test: /\.js?$/, exclude: /node_modules/, loader: 'babel' },
+          { test: /\.js?$/, exclude: /(node_modules|bower_components)\//, loader: 'babel' },
         ],
       },
     },

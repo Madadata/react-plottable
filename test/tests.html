@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>React-Plottable-Tests</title>
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+  <link rel="stylesheet" href="../bower_components/plottable/plottable.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script type="text/javascript" src="../node_modules/mocha/mocha.js"></script>
+  <script type="text/javascript" src="../node_modules/sinon/pkg/sinon.js"></script>
+  <script type="text/javascript" src="../node_modules/expect/umd/expect.js"></script>
+  <script type="text/javascript" src="../bower_components/d3/d3.min.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="../bower_components/plottable/plottable.min.js" charset="UTF-8"></script>
+  <script>mocha.setup('bdd')</script>
+  <!-- The source file we will be testing! Don't forget the data-cover attribute so Blanket will know which file will need to be instrumented for coverage. -->
+  <script type="text/javascript" src="../build/react-plottable.js" charset="UTF-8" data-cover></script>
+  <!-- Our test suite needs to be after the source file, of course -->
+  <script type="text/javascript" src="react-plottable.spec.js"></script>
+  <!-- For Blanket add coverage in our Mocha CLI tests (node environment),we need to add this reporter -->
+  <script>
+    if (window.PHANTOMJS) {
+      mochaPhantomJS.run();
+      // blanket.options("reporter", "../node_modules/grunt-blanket-mocha/support/grunt-reporter.js");
+    } else {
+      mocha.run()
+    }
+  </script>
+</body>
+</html>

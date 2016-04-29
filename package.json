@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "client:test": "mocha-phantomjs ./test/tests.html",
+    "build:test": "npm run build && npm run client:test"
   },
   "repository": {
     "type": "git",
@@ -26,13 +29,20 @@
     "babel-preset-stage-0": "^6.5.0",
     "expect": "^1.18.0",
     "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-coverage": "^0.5.5",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-html2js-preprocessor": "^0.1.0",
     "karma-mocha": "^0.2.2",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
+    "mocha-phantomjs": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.7",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
     "yargs": "^4.6.0"

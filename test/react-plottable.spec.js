@@ -62,6 +62,18 @@
 	  });
 	});
 
+	var _axes = __webpack_require__(34);
+
+	Object.keys(_axes).forEach(function (key) {
+	  if (key === "default") return;
+	  Object.defineProperty(exports, key, {
+	    enumerable: true,
+	    get: function get() {
+	      return _axes[key];
+	    }
+	  });
+	});
+
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
@@ -4087,6 +4099,106 @@
 	}
 
 	exports.default = extend;
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _axes = __webpack_require__(35);
+
+	var _scales = __webpack_require__(2);
+
+	var _expect = __webpack_require__(3);
+
+	var _expect2 = _interopRequireDefault(_expect);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	describe('Axes Test', function () {
+
+	  describe('Func: createAxis', function () {
+	    var linearScale = (0, _scales.createScale)('linear');
+	    var timeScale = (0, _scales.createScale)('time');
+	    var categoryScale = (0, _scales.createScale)('category');
+
+	    it('should create the right axes if inputs are right', function () {
+	      var numericAxis = (0, _axes.createAxis)(linearScale, 'bottom', 'numeric');
+	      var timeAxis = (0, _axes.createAxis)(timeScale, 'bottom', 'time');
+	      var categoryAxis = (0, _axes.createAxis)(categoryScale, 'bottom', 'time');
+
+	      var ExpectedNumericAxis = new Plottable.Axes.Numeric(new Plottable.Scales.Linear(), 'bottom');
+	      var ExpectedTimeAxis = new Plottable.Axes.Time(new Plottable.Scales.Time(), 'bottom');
+	      var ExpectedCategoryAxis = new Plottable.Axes.Category(new Plottable.Scales.Category(), 'bottom');
+
+	      (0, _expect2.default)(numericAxis).toEqual(ExpectedNumericAxis);
+	      (0, _expect2.default)(timeAxis).toEqual(ExpectedTimeAxis);
+	      (0, _expect2.default)(categoryAxis).toEqual(categoryAxis);
+	    });
+
+	    it('should throw error if number of parameters is less than 3', function () {
+	      var numericAxisNone = function numericAxisNone() {
+	        (0, _axes.createAxis)();
+	      };
+	      var numericAxisOne = function numericAxisOne() {
+	        (0, _axes.createAxis)(linearScale);
+	      };
+	      var numericAxisTwo = function numericAxisTwo() {
+	        (0, _axes.createAxis)(linearScale, 'bottom');
+	      };
+
+	      (0, _expect2.default)(numericAxisNone).toThrow();
+	      (0, _expect2.default)(numericAxisOne).toThrow();
+	      (0, _expect2.default)(numericAxisTwo).toThrow();
+	    });
+
+	    it('should throw error if type is not supported', function () {
+	      var createHelloAxis = function createHelloAxis() {
+	        (0, _axes.createAxis)(linearScale, 'bottom', 'hello');
+	      };
+
+	      (0, _expect2.default)(createHelloAxis).toThrow();
+	    });
+	  });
+	});
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.createAxis = createAxis;
+	exports.createAxes = createAxes;
+	function createAxis(scale, orientation, type) {
+	  switch (type) {
+	    case 'numeric':
+	      return new Plottable.Axes.Numeric(scale, orientation);
+	    case 'time':
+	      return new Plottable.Axes.Time(scale, orientation);
+	    case 'category':
+	      return new Plottable.Axes.Category(scale, orientation);
+	    default:
+	      throw new Error('the axis type ' + type + ' is not supported');
+	  }
+	}
+
+	function createAxes(xConfig, yConfig) {
+	  var xScale = xConfig.xScale;
+	  var xOrientation = xConfig.xOrientation;
+	  var xType = xConfig.xType;
+	  var yScale = yConfig.yScale;
+	  var yOrientation = yConfig.yOrientation;
+	  var yType = yConfig.yType;
+
+	  var xAxis = createAxis(xScale, xOrientation, xType);
+	  var yAxis = createAxis(yScale, yOrientation, yType);
+	  return { xAxis: xAxis, yAxis: yAxis };
+	}
 
 /***/ }
 /******/ ]);

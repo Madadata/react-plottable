@@ -1,4 +1,7 @@
 export function createAxis(scale, orientation, type) {
+  if (!(!!scale && !!orientation && !!type)) {
+    throw new Error('scale, orientation and type should be provided');
+  }
   switch (type) {
     case 'numeric':
       return new Plottable.Axes.Numeric(scale, orientation);

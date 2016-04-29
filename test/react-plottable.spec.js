@@ -50,14 +50,14 @@
 	  value: true
 	});
 
-	var _scalesSpec = __webpack_require__(1);
+	var _scales = __webpack_require__(1);
 
-	Object.keys(_scalesSpec).forEach(function (key) {
+	Object.keys(_scales).forEach(function (key) {
 	  if (key === "default") return;
 	  Object.defineProperty(exports, key, {
 	    enumerable: true,
 	    get: function get() {
-	      return _scalesSpec[key];
+	      return _scales[key];
 	    }
 	  });
 	});

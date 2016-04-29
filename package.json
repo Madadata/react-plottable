@@ -20,7 +20,10 @@
     "url": "https://github.com/Madadata/react-plottable/issues"
   },
   "homepage": "https://github.com/Madadata/react-plottable#readme",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "lodash": "^4.11.1"
+  },
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.7.7",

@@ -33,9 +33,9 @@ export function createScale(type, range) {
       if (!!range) {
         return createInterpolatedColorScale(range);
       } else {
-        throw new Error(`
-          color range should be provided in order to create InterpolatedScale
-        `);
+        throw new Error(
+        `color range should be provided in order to create InterpolatedScale`
+        );
       }
     }
     default:

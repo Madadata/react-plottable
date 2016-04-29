@@ -9,3 +9,5 @@ logs
 *.log
 npm-debug.log*
 .DS_Store
+# ignore the src and test bundle file
+*react-plottable*

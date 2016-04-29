@@ -67,12 +67,14 @@ describe('Axes Test', () => {
       yType: 'numeric',
     };
 
-    it('should throw error if parameters are not given', () => {
+    it('should throw error if relevent parameters are not given', () => {
       const createNoneAxesExecutor = () => { createAxes(); };
-      const createOneAxesExecutor = () => { createAxis(xScale); };
+      const createEmptyObjectAxesExecutor = () => { createAxes({}); };
+      const createOneAxesExecutor = () => { createAxes({ xConfig }); };
 
       expect(createNoneAxesExecutor).toThrow();
-      expect(createOneAxesExecutor).toThrow();
+      expect(createEmptyObjectAxesExecutor).toThrow(/xConfig/);
+      expect(createOneAxesExecutor).toThrow(/xConfig/);
     });
   });
 

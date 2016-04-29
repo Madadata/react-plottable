@@ -14,7 +14,10 @@ export function createAxis(scale, orientation, type) {
   }
 }
 
-export function createAxes(xConfig, yConfig) {
+export function createAxes({ xConfig, yConfig }) {
+  if (!(!!xConfig && !!yConfig)) {
+    throw new Error('xConfig and yConfig should be provided');
+  }
   const { xScale, xOrientation, xType } = xConfig;
   const { yScale, yOrientation, yType } = yConfig;
   const xAxis = createAxis(xScale, xOrientation, xType);

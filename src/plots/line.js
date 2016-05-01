@@ -3,6 +3,11 @@ import { STROKE } from '../config';
 // import { bindInteraction } from './utils';
 
 function initLinePlot({ data, xScale, yScale, xAxis, yAxis, onInteraction, config }) {
+  console.log(xAxis);
+  console.log(yAxis);
+  console.log(onInteraction);
+  console.log(config);
+
   const line = new Plottable.Plots.Line()
     .addDataset(new Plottable.Dataset(data))
     .x(d => (d.x), xScale)
@@ -10,6 +15,7 @@ function initLinePlot({ data, xScale, yScale, xAxis, yAxis, onInteraction, confi
     .attr('stroke', STROKE)
     .animated(true);
   return line;
+
   // return bindInteraction(
   //   line,
   //   'line',

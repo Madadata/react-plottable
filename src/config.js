@@ -21,5 +21,5 @@ export {
   COLOR_RANGE,
   DEFAULT_WAIT,
   Plottable,
-  d3
+  d3,
 };

@@ -32,11 +32,10 @@ export function createScale(type, range) {
     case 'interpolatedcolor': {
       if (!!range) {
         return createInterpolatedColorScale(range);
-      } else {
-        throw new Error(
-        `color range should be provided in order to create InterpolatedScale`
-        );
       }
+      throw new Error(
+       'color range should be provided in order to create InterpolatedScale'
+      );
     }
     default:
       throw new Error(`scale type ${type} is not supported`);

@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "globals": {
+        "Plottable": true,
+        "d3": true
+  },
+  "rules": {
+    "no-console": 0,
+  }
+}

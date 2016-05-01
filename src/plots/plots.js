@@ -19,7 +19,7 @@ export function scaleTypeToAxisType(scaleType) {
   }
 }
 
-function _areInteractionsValid(config) {
+function areInteractionsValid(config) {
   const { clickable, draggable } = config;
   if (!!clickable && !!draggable) {
     return false;
@@ -33,13 +33,13 @@ export function createPlotGen(initPlot, genConfig) {
   const yAxisType = scaleTypeToAxisType(yScaleType);
   return (data, config, onInteraction, defaultSelected) => {
     if (!config) throw new Error('Chart config not defined');
-    if (!_areInteractionsValid(config)) throw new Error('interactions are not valid');
+    if (!areInteractionsValid(config)) throw new Error('interactions are not valid');
     const xOrientation = config.xOrientation || 'bottom';
     const yOrientation = config.yOrientation || 'left';
     const { xScale, yScale } = createScales(xScaleType, yScaleType);
     const { xAxis, yAxis } = createAxes({
       xConfig: { xScale, xOrientation, xType: xAxisType },
-      yConfig: { yScale, yOrientation, yType: yAxisType }
+      yConfig: { yScale, yOrientation, yType: yAxisType },
     });
     const plot = initPlot(
       { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }

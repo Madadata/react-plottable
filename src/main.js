@@ -17,5 +17,5 @@ export {
   plots,
   interactions,
   tables,
-  render
+  render,
 };

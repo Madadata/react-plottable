@@ -1,43 +1,43 @@
 import {
   createLinePlot,
   createTimeLinePlot,
-  createCategoryLinePlot
+  createCategoryLinePlot,
 } from './line';
 
 import {
   createBarPlot,
   createCategoryBarPlot,
-  createTimeBarPlot
+  createTimeBarPlot,
 } from './bar';
 
 import {
   createAreaPlot,
   createTimeAreaPlot,
-  createCategoryAreaPlot
+  createCategoryAreaPlot,
 } from './area';
 
 import {
   createScatterPlot,
   createTimeScatterPlot,
-  createCategoryScatterPlot
+  createCategoryScatterPlot,
 } from './scatter';
 
 import {
   createClusteredBarPlot,
-  createTimeClusteredBarPlot
+  createTimeClusteredBarPlot,
 } from './clusteredbar';
 
 import {
-  createRectanglePlot
+  createRectanglePlot,
 } from './rectangle';
 
 import {
-  createPiePlot
+  createPiePlot,
 } from './pie';
 
 import {
   bindInteraction,
-  bindInteractionToPlotGroup
+  bindInteractionToPlotGroup,
 } from './utils';
 
 const plots = {};
@@ -54,7 +54,7 @@ plots.bar.createTimeBarPlot = createTimeBarPlot;
 
 plots.area = {};
 plots.area.createAreaPlot = createAreaPlot;
-plots.area.createTimeAreaPlot = createTimeAreaPlot
+plots.area.createTimeAreaPlot = createTimeAreaPlot;
 plots.area.createCategoryAreaPlot = createCategoryAreaPlot;
 
 plots.scatter = {};

@@ -37,7 +37,9 @@ const createCategoryPlot = (generic2DPlotConfig, onInteraction) => {
     case 'rectangle':
       return plots.rectangle.createRectanglePlot(data, config, onInteraction, defaultSelected);
     case 'clusteredbar':
-      return plots.clusteredbar.createClusteredBarPlot(data, config, onInteraction, defaultSelected);
+      return plots.clusteredbar.createClusteredBarPlot(
+        data, config, onInteraction, defaultSelected
+      );
     default:
       throw new Error(`2D plot type ${type} is not supported with category-linear scales`);
   }
@@ -55,7 +57,9 @@ const createTimeSeriesPlot = (generic2DPlotConfig, onInteraction) => {
     case 'scatter':
       return plots.scatter.createTimeScatterPlot(data, config, onInteraction, defaultSelected);
     case 'clusteredbar':
-      return plots.clusteredbar.createTimeClusteredBarPlot(data, config, onInteraction, defaultSelected);
+      return plots.clusteredbar.createTimeClusteredBarPlot(
+        data, config, onInteraction, defaultSelected
+      );
     default:
       throw new Error(`2D plot type ${type} is not supported`);
   }
@@ -93,14 +97,14 @@ export const createDouble2DPlot = (generic2DPlotConfigArray, xAxisType) => {
 };
 
 export const createMultiple2DPlot = (generic2DPlotConfigArray, xAxisType) => {
-  const plots = [];
+  const plotArr = [];
   _.forEach(generic2DPlotConfigArray, generic2DPlotConfig => {
     const { plot } = createSingle2DPlot(generic2DPlotConfig, xAxisType);
-    plots.push(plot);
+    plotArr.push(plot);
   });
   // this line of code is ad hoc for the readability, should be modified later
   const { xAxis } = createSingle2DPlot(generic2DPlotConfigArray[0], xAxisType);
-  const group = new Plottable.Components.Group(plots);
+  const group = new Plottable.Components.Group(plotArr);
   return { group, xAxis };
 };
 

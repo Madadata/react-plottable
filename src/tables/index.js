@@ -1,6 +1,6 @@
 import {
   createTable,
-  drawTable
+  drawTable,
 } from './tables';
 
 const tables = {};

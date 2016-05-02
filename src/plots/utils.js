@@ -29,7 +29,7 @@ const draggablePlots = Object.freeze([
   'scatter',
 ]);
 
-export const bindInteraction = (
+export function bindInteraction (
   plot,
   plotName,
   xScale,
@@ -39,7 +39,7 @@ export const bindInteraction = (
   onInteraction,
   config,
   defaultSelected
-) => {
+) {
   const { dragBoxType, clickable, panZoomType } = config;
   let interactivePlot = plot;
 
@@ -63,12 +63,12 @@ export const bindInteraction = (
   return interactivePlot;
 };
 
-export const bindInteractionToPlotGroup = (
+export function bindInteractionToPlotGroup (
   plotGroup,
   onInteraction,
   config,
   defaultSelected
-) => {
+) {
   const { dragBoxType, clickable, panZoomType } = config;
   const interactivePlotGroup = plotGroup;
   if (!!clickable && clickablePlots.has('plotgroup')) {

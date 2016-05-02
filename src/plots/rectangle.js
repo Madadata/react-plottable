@@ -3,9 +3,9 @@ import { createScale } from '../scales';
 import { bindInteraction } from './utils';
 import { COLOR_RANGE } from '../config';
 
-const initRectanglePlot = (
+function initRectanglePlot (
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
-) => {
+) {
   // assume data to be [{x: dimensionA, y: dimensionB, z: count},...]
   const cScale = createScale('interpolatedcolor', COLOR_RANGE);
   const rectangle = new Plottable.Plots.Rectangle()

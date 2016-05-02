@@ -1,7 +1,7 @@
 import plots from '../plots';
 import _ from 'lodash';
 
-const createLinearPlot = (generic2DPlotConfig, onInteraction) => {
+function createLinearPlot (generic2DPlotConfig, onInteraction) {
   const { data, type, config } = generic2DPlotConfig;
   switch (type) {
     case 'line':
@@ -21,7 +21,7 @@ const createLinearPlot = (generic2DPlotConfig, onInteraction) => {
   }
 };
 
-const createCategoryPlot = (generic2DPlotConfig, onInteraction) => {
+function createCategoryPlot (generic2DPlotConfig, onInteraction) {
   const { data, type, config, defaultSelected } = generic2DPlotConfig;
   switch (type) {
     case 'line':
@@ -45,7 +45,7 @@ const createCategoryPlot = (generic2DPlotConfig, onInteraction) => {
   }
 };
 
-const createTimeSeriesPlot = (generic2DPlotConfig, onInteraction) => {
+function createTimeSeriesPlot (generic2DPlotConfig, onInteraction) {
   const { data, type, config, defaultSelected } = generic2DPlotConfig;
   switch (type) {
     case 'line':
@@ -65,7 +65,7 @@ const createTimeSeriesPlot = (generic2DPlotConfig, onInteraction) => {
   }
 };
 
-export const createSingle2DPlot = (generic2DPlotConfig, xType, onInteraction) => {
+export function createSingle2DPlot (generic2DPlotConfig, xType, onInteraction) {
   let plot;
   let xAxis;
   let yAxis;
@@ -86,7 +86,7 @@ export const createSingle2DPlot = (generic2DPlotConfig, xType, onInteraction) =>
   return { plot, xAxis, yAxis };
 };
 
-export const createDouble2DPlot = (generic2DPlotConfigArray, xAxisType) => {
+export function createDouble2DPlot (generic2DPlotConfigArray, xAxisType) {
   const { xAxis,
           plot: plot1,
           yAxis: y1Axis } = createSingle2DPlot(generic2DPlotConfigArray[0], xAxisType);
@@ -96,7 +96,7 @@ export const createDouble2DPlot = (generic2DPlotConfigArray, xAxisType) => {
   return { group, xAxis, y1Axis, y2Axis };
 };
 
-export const createMultiple2DPlot = (generic2DPlotConfigArray, xAxisType) => {
+export function createMultiple2DPlot (generic2DPlotConfigArray, xAxisType) {
   const plotArr = [];
   _.forEach(generic2DPlotConfigArray, generic2DPlotConfig => {
     const { plot } = createSingle2DPlot(generic2DPlotConfig, xAxisType);
@@ -108,7 +108,7 @@ export const createMultiple2DPlot = (generic2DPlotConfigArray, xAxisType) => {
   return { group, xAxis };
 };
 
-export const createPlotGroup = (generic2DPlotConfigArray, xAxisType, onInteraction) => {
+export function createPlotGroup (generic2DPlotConfigArray, xAxisType, onInteraction) {
   if (generic2DPlotConfigArray.length < 2) {
     throw new Error('You don\'t have to use plotGroup with only one plot');
   } else if (generic2DPlotConfigArray.length === 2) {

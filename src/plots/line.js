@@ -2,9 +2,9 @@ import { createPlotGen } from './plots';
 import { STROKE } from '../config';
 import { bindInteraction } from './utils';
 
-const initLinePlot = (
+function initLinePlot (
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config }
-) => {
+) {
   const line = new Plottable.Plots.Line()
     .addDataset(new Plottable.Dataset(data))
     .x(d => (d.x), xScale)

@@ -1,11 +1,11 @@
-import { createScale } from '../scales/scales';
+import { createScale } from '../scales';
 import { COLOR_RANGE } from '../config';
 import { bindInteraction } from './utils';
 import _ from 'lodash';
 
-const initPiePlot = (
+function initPiePlot (
   { data, xScale, cScale, xAxis, yAxis, onInteraction, config, defaultSelected }
-) => {
+) {
   // this map function is ad hoc. It won't work well
   // when different wedge has the same area.
   // should be refined to employ hash table like thing.

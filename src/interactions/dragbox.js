@@ -3,7 +3,7 @@ import _ from 'lodash';
 import $ from 'jquery';
 
 /* eslint-disable */
-const _bindDragBoxTo = (plot, dragBox, onDrag, xScale, yScale, defaultSelected, plotName) => {
+function _bindDragBoxTo (plot, dragBox, onDrag, xScale, yScale, defaultSelected, plotName) {
   let curBox;
   let curMin;
   let curMax;
@@ -100,9 +100,9 @@ const _bindDragBoxTo = (plot, dragBox, onDrag, xScale, yScale, defaultSelected, 
   return new Plottable.Components.Group([dragBox, plot]);
 };
 /* eslint-enable */
-export const bindDragBoxTo = (
+export function bindDragBoxTo (
   plot, dragBoxType, onDrag, xScale, yScale, defaultSelected, plotName
-) => {
+) {
   switch (dragBoxType) {
     case 'x': {
       const xDragBox = new Plottable.Components.XDragBoxLayer();

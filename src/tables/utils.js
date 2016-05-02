@@ -1,5 +1,5 @@
 import _ from 'lodash';
-export const getXAxisType = (generic2DPlotConfig) => {
+export function getXAxisType (generic2DPlotConfig) {
   // We assume that all data points ([{x: any, y: any}, {x: any, y: any},...])
   // have the same type of x. A consistent check should be implemented for production.
   // return typeof generic2DPlotConfig.data[0].x;
@@ -18,14 +18,14 @@ export const getXAxisType = (generic2DPlotConfig) => {
   throw new Error('The x axis type is not supported');
 };
 
-export const isXAxisConsistent = (plotCollections) => {
+export function isXAxisConsistent (plotCollections) {
   const xAxisType = getXAxisType(plotCollections[0]);
   const isConsistent = _.every(plotCollections, plotCollection =>
     (getXAxisType(plotCollection) === xAxisType));
   return isConsistent;
 };
 
-const addNameToData = (data, name) => {
+function addNameToData (data, name) {
   const newData = [];
   _.forEach(data, datum => {
     newData.push(_.assign({}, datum, { name }));
@@ -33,7 +33,7 @@ const addNameToData = (data, name) => {
   return newData;
 };
 
-export const regroup = (plotCollections) => {
+export function regroup (plotCollections) {
   const newPlotCollections = [];
   const clusteredBarCollection = {};
   _.forEach(plotCollections, plotCollection => {

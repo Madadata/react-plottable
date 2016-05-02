@@ -1,10 +1,10 @@
-import { createScale } from '../scales/scales';
+import { createScale } from '../scales';
 import { createPlotGen } from './plots';
 import { bindInteraction } from './utils';
 import { COLOR_RANGE } from '../config';
 import _ from 'lodash';
 
-const initClusteredBarPlot = ({
+function initClusteredBarPlot ({
   data: dataCollections,
   xScale,
   yScale,
@@ -13,7 +13,7 @@ const initClusteredBarPlot = ({
   onInteraction,
   config,
   defaultSelected,
-}) => {
+}) {
   const cScale = createScale('interpolatedcolor', COLOR_RANGE);
   const clusteredBar = new Plottable.Plots.ClusteredBar();
   const collectionNum = dataCollections.length;

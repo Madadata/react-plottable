@@ -2,9 +2,9 @@ import { createPlotGen } from './plots';
 import { FILL } from '../config';
 import { bindInteraction } from './utils';
 
-const initBarPlot = (
+function initBarPlot (
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
-) => {
+) {
   const bar = new Plottable.Plots.Bar('vertical')
     .addDataset(new Plottable.Dataset(data))
     .x(d => (d.x), xScale)

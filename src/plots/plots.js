@@ -1,7 +1,7 @@
-import { createScales } from '../scales/scales';
-import { createAxes } from '../axes/axes';
+import axes from '../axes';
+import scales from '../scales';
 
-export const scaleTypeToAxisType = (scaleType) => {
+export function scaleTypeToAxisType (scaleType) {
   if (!scaleType) {
     throw new Error('scaleType should be provided');
   }
@@ -19,7 +19,7 @@ export const scaleTypeToAxisType = (scaleType) => {
   }
 };
 
-const areInteractionsValid = (config) => {
+function areInteractionsValid (config) {
   const { clickable, draggable } = config;
   if (!!clickable && !!draggable) {
     return false;
@@ -27,7 +27,7 @@ const areInteractionsValid = (config) => {
   return true;
 };
 
-export const createPlotGen = (initPlot, genConfig) => {
+export function createPlotGen (initPlot, genConfig) {
   const { xScaleType, yScaleType } = genConfig;
   const xAxisType = scaleTypeToAxisType(xScaleType);
   const yAxisType = scaleTypeToAxisType(yScaleType);
@@ -36,8 +36,8 @@ export const createPlotGen = (initPlot, genConfig) => {
     if (!areInteractionsValid(config)) throw new Error('interactions are not valid');
     const xOrientation = config.xOrientation || 'bottom';
     const yOrientation = config.yOrientation || 'left';
-    const { xScale, yScale } = createScales(xScaleType, yScaleType);
-    const { xAxis, yAxis } = createAxes({
+    const { xScale, yScale } = scales.createScales(xScaleType, yScaleType);
+    const { xAxis, yAxis } = axes.createAxes({
       xConfig: { xScale, xOrientation, xType: xAxisType },
       yConfig: { yScale, yOrientation, yType: yAxisType },
     });

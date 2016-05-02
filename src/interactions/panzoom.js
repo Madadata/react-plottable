@@ -1,21 +1,21 @@
-const bindXPanZoomTo = (plot, xScale, xAxis) => {
+function bindXPanZoomTo (plot, xScale, xAxis) {
   const pziXAxis = new Plottable.Interactions.PanZoom();
   pziXAxis.addXScale(xScale);
   pziXAxis.attachTo(xAxis);
 };
 
-const bindYPanZoomTo = (plot, yScale, yAxis) => {
+function bindYPanZoomTo (plot, yScale, yAxis) {
   const pziYAxis = new Plottable.Interactions.PanZoom();
   pziYAxis.addYScale(yScale);
   pziYAxis.attachTo(yAxis);
 };
 
-const bindXYPanZoomTo = (plot, xScale, yScale, xAxis, yAxis) => {
+function bindXYPanZoomTo (plot, xScale, yScale, xAxis, yAxis) {
   bindXPanZoomTo(plot, xScale, xAxis);
   bindYPanZoomTo(plot, yScale, yAxis);
 };
 
-export const bindPanZoomTo = (plot, panZoomType, xScale, yScale, xAxis, yAxis) => {
+export function bindPanZoomTo (plot, panZoomType, xScale, yScale, xAxis, yAxis) {
   switch (panZoomType) {
     case 'x':
       bindXPanZoomTo(plot, xScale, xAxis);

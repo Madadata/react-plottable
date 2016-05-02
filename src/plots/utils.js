@@ -1,4 +1,4 @@
-import { bindDragBoxTo, bindPanZoomTo, bindClickTo } from '../interactions';
+import interactions from '../interactions';
 import _ from 'lodash';
 
 const clickablePlots = Object.freeze([
@@ -44,17 +44,17 @@ export const bindInteraction = (
   let interactivePlot = plot;
 
   if (!!clickable && _.includes(clickablePlots, plotName)) {
-    bindClickTo(interactivePlot, onInteraction, defaultSelected);
+    interactions.bindClickTo(interactivePlot, onInteraction, defaultSelected);
   } else if (!!clickable && !_.includes(clickablePlots, plotName)) {
     throw new Error(`click is not supported by ${plotName}`);
   }
   if (!!panZoomType && _.includes(zoomablePlots, plotName)) {
-    bindPanZoomTo(interactivePlot, panZoomType, xScale, yScale, xAxis, yAxis);
+    interactions.bindPanZoomTo(interactivePlot, panZoomType, xScale, yScale, xAxis, yAxis);
   } else if (!!panZoomType && !_.includes(zoomablePlots, plotName)) {
     throw new Error(`zoom is not supported by ${plotName}`);
   }
   if (!!dragBoxType && _.includes(draggablePlots, plotName)) {
-    interactivePlot = bindDragBoxTo(
+    interactivePlot = interactions.bindDragBoxTo(
       plot, dragBoxType, onInteraction, xScale, yScale, defaultSelected, plotName
     );
   } else if (!!dragBoxType && !_.includes(draggablePlots, plotName)) {
@@ -72,7 +72,7 @@ export const bindInteractionToPlotGroup = (
   const { dragBoxType, clickable, panZoomType } = config;
   const interactivePlotGroup = plotGroup;
   if (!!clickable && clickablePlots.has('plotgroup')) {
-    bindClickTo(interactivePlotGroup, onInteraction, defaultSelected);
+    interactions.bindClickTo(interactivePlotGroup, onInteraction, defaultSelected);
   }
   if (!!panZoomType) {
     throw new Error('zoom is not supported by plotgroup');

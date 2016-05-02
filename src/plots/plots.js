@@ -1,5 +1,5 @@
-import { createScales } from '../scales/scales';
-import { createAxes } from '../axes/axes';
+import axes from '../axes';
+import scales from '../scales';
 
 export const scaleTypeToAxisType = (scaleType) => {
   if (!scaleType) {
@@ -36,8 +36,8 @@ export const createPlotGen = (initPlot, genConfig) => {
     if (!areInteractionsValid(config)) throw new Error('interactions are not valid');
     const xOrientation = config.xOrientation || 'bottom';
     const yOrientation = config.yOrientation || 'left';
-    const { xScale, yScale } = createScales(xScaleType, yScaleType);
-    const { xAxis, yAxis } = createAxes({
+    const { xScale, yScale } = scales.createScales(xScaleType, yScaleType);
+    const { xAxis, yAxis } = axes.createAxes({
       xConfig: { xScale, xOrientation, xType: xAxisType },
       yConfig: { yScale, yOrientation, yType: yAxisType },
     });

@@ -1,14 +1,16 @@
-export const createLinearScale = () => (new Plottable.Scales.Linear());
-export const createCategoryScale = () => (new Plottable.Scales.Category());
-export const createColorScale = () => (new Plottable.Scales.Color());
-export const createTimeScale = () => (new Plottable.Scales.Time());
-export const createInterpolatedColorScale = (range) => {
+const scales = {};
+
+const createLinearScale = () => (new Plottable.Scales.Linear());
+const createCategoryScale = () => (new Plottable.Scales.Category());
+const createColorScale = () => (new Plottable.Scales.Color());
+const createTimeScale = () => (new Plottable.Scales.Time());
+const createInterpolatedColorScale = (range) => {
   const interpolatedColorScale = new Plottable.Scales.InterpolatedColor();
   interpolatedColorScale.range(range);
   return interpolatedColorScale;
 };
 
-export const createScale = (type, range) => {
+const createScale = (type, range) => {
   if (!type) {
     throw new Error('A scale type should be provided');
   }
@@ -34,8 +36,18 @@ export const createScale = (type, range) => {
   }
 };
 
-export const createScales = (xType, yType, xRange, yRange) => {
+const createScales = (xType, yType, xRange, yRange) => {
   const xScale = createScale(xType, xRange);
   const yScale = createScale(yType, yRange);
   return { xScale, yScale };
 };
+
+scales.createLinearScale = createLinearScale;
+scales.createCategoryScale = createCategoryScale;
+scales.createColorScale = createColorScale;
+scales.createTimeScale = createTimeScale;
+scales.createInterpolatedColorScale = createInterpolatedColorScale;
+scales.createScale = createScale;
+scales.createScales = createScales;
+
+export default scales;

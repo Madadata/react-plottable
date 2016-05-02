@@ -1,4 +1,4 @@
-import { createScale } from '../scales/scales';
+import { createScale } from '../scales';
 import { COLOR_RANGE } from '../config';
 import { bindInteraction } from './utils';
 import _ from 'lodash';

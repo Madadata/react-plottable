@@ -19,7 +19,5 @@ export {
   HOVERED,
   GROUP_SELECTED,
   COLOR_RANGE,
-  DEFAULT_WAIT,
-  Plottable,
-  d3,
+  DEFAULT_WAIT
 };

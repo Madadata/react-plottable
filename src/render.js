@@ -1,8 +1,13 @@
-import { createTable, drawTable } from './tables';
+const render = {};
 
-export const renderChart = (config, ref, onInteraction) => {
-  const table = createTable(config, onInteraction);
+import tables from './tables';
+
+const renderChart = (config, ref, onInteraction) => {
+  const table = tables.createTable(config, onInteraction);
   console.log(table);
-  drawTable(table, ref);
+  tables.drawTable(table, ref);
   return table;
 };
+
+render.renderChart = renderChart;
+export default render;

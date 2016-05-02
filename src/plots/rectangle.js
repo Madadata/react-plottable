@@ -1,5 +1,5 @@
 import { createPlotGen } from './plots';
-import { createScale } from '../scales/scales';
+import { createScale } from '../scales';
 import { bindInteraction } from './utils';
 import { COLOR_RANGE } from '../config';
 

@@ -1,4 +1,6 @@
-export const createAxis = (scale, orientation, type) => {
+const axes = {};
+
+const createAxis = (scale, orientation, type) => {
   if (!(!!scale && !!orientation && !!type)) {
     throw new Error('scale, orientation and type should be provided');
   }
@@ -14,7 +16,7 @@ export const createAxis = (scale, orientation, type) => {
   }
 };
 
-export const createAxes = ({ xConfig, yConfig }) => {
+const createAxes = ({ xConfig, yConfig }) => {
   if (!(!!xConfig && !!yConfig)) {
     throw new Error('xConfig and yConfig should be provided');
   }
@@ -24,3 +26,8 @@ export const createAxes = ({ xConfig, yConfig }) => {
   const yAxis = createAxis(yScale, yOrientation, yType);
   return { xAxis, yAxis };
 };
+
+axes.createAxis = createAxis;
+axes.createAxes = createAxes;
+
+export default axes;

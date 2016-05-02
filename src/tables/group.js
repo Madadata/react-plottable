@@ -1,42 +1,19 @@
-import {
-  createLinePlot,
-  createTimeLinePlot,
-  createCategoryLinePlot,
-  createBarPlot,
-  createCategoryBarPlot,
-  createTimeBarPlot,
-  createAreaPlot,
-  createTimeAreaPlot,
-  createCategoryAreaPlot,
-  createScatterPlot,
-  createTimeScatterPlot,
-  createCategoryScatterPlot,
-  createHistogramPlot,
-  createCategoryHistogramPlot,
-  createTimeHistogramPlot,
-  createClusteredBarPlot,
-  createTimeClusteredBarPlot,
-  createPiePlot,
-  createRectanglePlot,
-  bindInteractionToPlotGroup,
-} from '../plots';
+import plots from '../plots';
 import _ from 'lodash';
 
 const createLinearPlot = (generic2DPlotConfig, onInteraction) => {
   const { data, type, config } = generic2DPlotConfig;
   switch (type) {
     case 'line':
-      return createLinePlot(data, config);
+      return plots.line.createLinePlot(data, config);
     case 'area':
-      return createAreaPlot(data, config);
+      return plots.area.createAreaPlot(data, config);
     case 'bar':
-      return createBarPlot(data, config, onInteraction);
+      return plots.bar.createBarPlot(data, config, onInteraction);
     case 'pie':
-      return createPiePlot(data, config, onInteraction);
-    case 'histogram':
-      return createHistogramPlot(data, config, onInteraction);
+      return plots.pie.createPiePlot(data, config, onInteraction);
     case 'scatter':
-      return createScatterPlot(data, config, onInteraction);
+      return plots.scatter.createScatterPlot(data, config, onInteraction);
     // case 'clusteredbar':
     //   return createClusteredBarPlot(data, config, onInteraction);
     default:
@@ -48,21 +25,19 @@ const createCategoryPlot = (generic2DPlotConfig, onInteraction) => {
   const { data, type, config, defaultSelected } = generic2DPlotConfig;
   switch (type) {
     case 'line':
-      return createCategoryLinePlot(data, config, onInteraction);
+      return plots.line.createCategoryLinePlot(data, config, onInteraction);
     case 'area':
-      return createCategoryAreaPlot(data, config);
+      return plots.area.createCategoryAreaPlot(data, config);
     case 'pie':
-      return createPiePlot(data, config, onInteraction, defaultSelected);
+      return plots.pie.createPiePlot(data, config, onInteraction, defaultSelected);
     case 'scatter':
-      return createCategoryScatterPlot(data, config, onInteraction, defaultSelected);
+      return plots.scatter.createCategoryScatterPlot(data, config, onInteraction, defaultSelected);
     case 'bar':
-      return createCategoryBarPlot(data, config, onInteraction, defaultSelected);
-    case 'histogram':
-      return createCategoryHistogramPlot(data, config, onInteraction);
+      return plots.bar.createCategoryBarPlot(data, config, onInteraction, defaultSelected);
     case 'rectangle':
-      return createRectanglePlot(data, config, onInteraction, defaultSelected);
+      return plots.rectangle.createRectanglePlot(data, config, onInteraction, defaultSelected);
     case 'clusteredbar':
-      return createClusteredBarPlot(data, config, onInteraction, defaultSelected);
+      return plots.clusteredbar.createClusteredBarPlot(data, config, onInteraction, defaultSelected);
     default:
       throw new Error(`2D plot type ${type} is not supported with category-linear scales`);
   }
@@ -72,17 +47,15 @@ const createTimeSeriesPlot = (generic2DPlotConfig, onInteraction) => {
   const { data, type, config, defaultSelected } = generic2DPlotConfig;
   switch (type) {
     case 'line':
-      return createTimeLinePlot(data, config, onInteraction, defaultSelected);
+      return plots.line.createTimeLinePlot(data, config, onInteraction, defaultSelected);
     case 'area':
-      return createTimeAreaPlot(data, config);
+      return plots.area.createTimeAreaPlot(data, config);
     case 'bar':
-      return createTimeBarPlot(data, config, onInteraction, defaultSelected);
+      return plots.bar.createTimeBarPlot(data, config, onInteraction, defaultSelected);
     case 'scatter':
-      return createTimeScatterPlot(data, config, onInteraction, defaultSelected);
-    case 'histogram':
-      return createTimeHistogramPlot(data, config, onInteraction);
+      return plots.scatter.createTimeScatterPlot(data, config, onInteraction, defaultSelected);
     case 'clusteredbar':
-      return createTimeClusteredBarPlot(data, config, onInteraction, defaultSelected);
+      return plots.clusteredbar.createTimeClusteredBarPlot(data, config, onInteraction, defaultSelected);
     default:
       throw new Error(`2D plot type ${type} is not supported`);
   }
@@ -149,7 +122,7 @@ export const createPlotGroup = (generic2DPlotConfigArray, xAxisType, onInteracti
     plotGroup.append(plot1);
     plotGroup.append(plot2);
     if (_.has(config1, 'clickable') || _.has(config2, 'clickable')) {
-      bindInteractionToPlotGroup(plotGroup, onInteraction, { clickable: true });
+      plots.utils.bindInteractionToPlotGroup(plotGroup, onInteraction, { clickable: true });
     }
     return { group: plotGroup, xAxis, y1Axis, y2Axis };
   } else {
@@ -168,7 +141,7 @@ export const createPlotGroup = (generic2DPlotConfigArray, xAxisType, onInteracti
       }
     });
     if (hasClickable) {
-      bindInteractionToPlotGroup(plotGroup, onInteraction, { clickable: true });
+      plots.utils.bindInteractionToPlotGroup(plotGroup, onInteraction, { clickable: true });
     }
     const { xAxis } = createSingle2DPlot(generic2DPlotConfigArray[0], xAxisType);
     return { group: plotGroup, xAxis };

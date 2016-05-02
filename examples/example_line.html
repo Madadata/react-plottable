@@ -10,7 +10,7 @@
 <script type="text/javascript" src="../bower_components/jQuery/dist/jquery.js"></script>
 <script type="text/javascript" src="../bower_components/d3/d3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="../bower_components/plottable/plottable.js" charset="UTF-8"></script>
-<script type="text/javascript" src="../dist/react-plottable.umd.min.js"></script>
+<script type="text/javascript" src="../dist/react-plottable.umd.js"></script>
 <script type="text/javascript">
   var svg = d3.select('svg#plottable');
   var tableConfig = {
@@ -44,7 +44,7 @@
   var onInteraction = function(selected) {
     console.log(selected);
   };
-  reactplottable.renderChart(tableConfig, svg, onInteraction);
+  reactplottable.render.renderChart(tableConfig, svg, onInteraction);
 </script>
 </body>
 </html>

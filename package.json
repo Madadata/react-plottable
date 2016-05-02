@@ -76,7 +76,7 @@
       "path": "cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run lint && npm run cover"
+      "pre-commit": "npm run lint"
     }
   }
 }

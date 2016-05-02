@@ -1,4 +1,4 @@
-export function createAxis(scale, orientation, type) {
+export const createAxis = (scale, orientation, type) => {
   if (!(!!scale && !!orientation && !!type)) {
     throw new Error('scale, orientation and type should be provided');
   }
@@ -12,9 +12,9 @@ export function createAxis(scale, orientation, type) {
     default:
       throw new Error(`the axis type ${type} is not supported`);
   }
-}
+};
 
-export function createAxes({ xConfig, yConfig }) {
+export const createAxes = ({ xConfig, yConfig }) => {
   if (!(!!xConfig && !!yConfig)) {
     throw new Error('xConfig and yConfig should be provided');
   }
@@ -23,4 +23,4 @@ export function createAxes({ xConfig, yConfig }) {
   const xAxis = createAxis(xScale, xOrientation, xType);
   const yAxis = createAxis(yScale, yOrientation, yType);
   return { xAxis, yAxis };
-}
+};

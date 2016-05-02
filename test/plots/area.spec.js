@@ -1,21 +1,19 @@
 import {
-  createLinePlot,
-  createTimeLinePlot,
-  createCategoryLinePlot
-} from '../../src/plots/line';
+  createAreaPlot,
+  createTimeAreaPlot,
+  createCategoryAreaPlot
+} from '../../src/plots/area';
 import {
   generateLinearData,
-  generateTimeSeriesData,
-  generateCategoryData,
   generateSVG,
   plotConfig
 } from '../testUtils/';
 
 import expect from 'expect';
 
-describe('Line Plot Tests', () => {
+describe('Area Plot Tests', () => {
   let svg;
-  let line;
+  let area;
   let data;
   let config;
 
@@ -26,15 +24,15 @@ describe('Line Plot Tests', () => {
   });
 
   afterEach(() => {
-    line.destroy();
+    area.destroy();
     svg.remove();
   });
 
-  describe('Func: createLinePlot', () => {
+  describe('Func: createAreaPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: line } = createLinePlot(data, config));
-      line.renderTo(svg);
+      ({ plot: area } = createAreaPlot(data, config));
+      area.renderTo(svg);
     });
 
   });

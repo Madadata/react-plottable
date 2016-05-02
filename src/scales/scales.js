@@ -1,22 +1,14 @@
-export function createLinearScale() {
-  return new Plottable.Scales.Linear();
-}
-export function createCategoryScale() {
-  return new Plottable.Scales.Category();
-}
-export function createColorScale() {
-  return new Plottable.Scales.Color();
-}
-export function createTimeScale() {
-  return new Plottable.Scales.Time();
-}
-export function createInterpolatedColorScale(range) {
+export const createLinearScale = () => (new Plottable.Scales.Linear());
+export const createCategoryScale = () => (new Plottable.Scales.Category());
+export const createColorScale = () => (new Plottable.Scales.Color());
+export const createTimeScale = () => (new Plottable.Scales.Time());
+export const createInterpolatedColorScale = (range) => {
   const interpolatedColorScale = new Plottable.Scales.InterpolatedColor();
   interpolatedColorScale.range(range);
   return interpolatedColorScale;
-}
+};
 
-export function createScale(type, range) {
+export const createScale = (type, range) => {
   if (!type) {
     throw new Error('A scale type should be provided');
   }
@@ -40,10 +32,10 @@ export function createScale(type, range) {
     default:
       throw new Error(`scale type ${type} is not supported`);
   }
-}
+};
 
-export function createScales(xType, yType, xRange, yRange) {
+export const createScales = (xType, yType, xRange, yRange) => {
   const xScale = createScale(xType, xRange);
   const yScale = createScale(yType, yRange);
   return { xScale, yScale };
-}
+};

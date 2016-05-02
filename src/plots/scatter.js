@@ -1,47 +1,48 @@
 import { createPlotGen } from './plots';
-import { STROKE } from '../config';
 import { bindInteraction } from './utils';
+import { FILL } from '../config';
 
-const initLinePlot = (
-  { data, xScale, yScale, xAxis, yAxis, onInteraction, config }
+const initScatterPlot = (
+  { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
 ) => {
-  const line = new Plottable.Plots.Line()
+  const scatter = new Plottable.Plots.Scatter()
     .addDataset(new Plottable.Dataset(data))
     .x(d => (d.x), xScale)
     .y(d => (d.y), yScale)
-    .attr('stroke', STROKE)
+    .attr('fill', FILL)
     .animated(true);
 
   return bindInteraction(
-    line,
-    'line',
+    scatter,
+    'scatter',
     xScale,
     yScale,
     xAxis,
     yAxis,
     onInteraction,
-    config
+    config,
+    defaultSelected
   );
 };
 
-export const createLinePlot = createPlotGen(
-  initLinePlot,
+export const createScatterPlot = createPlotGen(
+  initScatterPlot,
   {
     xScaleType: 'linear',
     yScaleType: 'linear',
   }
 );
 
-export const createTimeLinePlot = createPlotGen(
-  initLinePlot,
+export const createTimeScatterPlot = createPlotGen(
+  initScatterPlot,
   {
     xScaleType: 'time',
     yScaleType: 'linear',
   }
 );
 
-export const createCategoryLinePlot = createPlotGen(
-  initLinePlot,
+export const createCategoryScatterPlot = createPlotGen(
+  initScatterPlot,
   {
     xScaleType: 'category',
     yScaleType: 'linear',

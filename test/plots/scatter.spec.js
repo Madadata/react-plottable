@@ -1,8 +1,8 @@
 import {
-  createLinePlot,
-  createTimeLinePlot,
-  createCategoryLinePlot
-} from '../../src/plots/line';
+  createScatterPlot,
+  createTimeScatterPlot,
+  createCategoryScatterPlot
+} from '../../src/plots/scatter';
 import {
   generateLinearData,
   generateTimeSeriesData,
@@ -13,9 +13,9 @@ import {
 
 import expect from 'expect';
 
-describe('Line Plot Tests', () => {
+describe('Scatter Plot Tests', () => {
   let svg;
-  let line;
+  let scatter;
   let data;
   let config;
 
@@ -26,15 +26,15 @@ describe('Line Plot Tests', () => {
   });
 
   afterEach(() => {
-    line.destroy();
+    scatter.destroy();
     svg.remove();
   });
 
-  describe('Func: createLinePlot', () => {
+  describe('Func: createScatterPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: line } = createLinePlot(data, config));
-      line.renderTo(svg);
+      ({ plot: scatter } = createScatterPlot(data, config));
+      scatter.renderTo(svg);
     });
 
   });

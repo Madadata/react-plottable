@@ -2,7 +2,7 @@ import { createPlotGen } from './plots';
 import { bindInteraction } from './utils';
 import { FILL, STROKE } from '../config';
 
-function initAreaPlot ({ data, xScale, yScale, xAxis, yAxis, onInteraction, config }) {
+function initAreaPlot({ data, xScale, yScale, xAxis, yAxis, onInteraction, config }) {
   const area = new Plottable.Plots.Area()
     .addDataset(new Plottable.Dataset(data))
     .x(d => (d.x), xScale)
@@ -21,7 +21,7 @@ function initAreaPlot ({ data, xScale, yScale, xAxis, yAxis, onInteraction, conf
     onInteraction,
     config
   );
-};
+}
 
 export const createAreaPlot = createPlotGen(
   initAreaPlot,

@@ -2,7 +2,7 @@ import { SELECTED, DEFAULT_WAIT } from '../config';
 import _ from 'lodash';
 import $ from 'jquery';
 
-export function bindClickTo (plot, onClick, defaultSelected) {
+export function bindClickTo(plot, onClick, defaultSelected) {
   const interaction = new Plottable.Interactions.Click();
   // default selected
   if (!!defaultSelected) {
@@ -44,4 +44,4 @@ export function bindClickTo (plot, onClick, defaultSelected) {
     onClick(selection.datum(), 'click');
   });
   interaction.attachTo(plot);
-};
+}

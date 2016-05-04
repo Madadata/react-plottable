@@ -1,7 +1,7 @@
 import axes from '../axes';
 import scales from '../scales';
 
-export function scaleTypeToAxisType (scaleType) {
+export function scaleTypeToAxisType(scaleType) {
   if (!scaleType) {
     throw new Error('scaleType should be provided');
   }
@@ -17,17 +17,17 @@ export function scaleTypeToAxisType (scaleType) {
         `scale type ${scaleType} is not supported in scaleTypeToAxisType const`
       );
   }
-};
+}
 
-function areInteractionsValid (config) {
+function areInteractionsValid(config) {
   const { clickable, draggable } = config;
   if (!!clickable && !!draggable) {
     return false;
   }
   return true;
-};
+}
 
-export function createPlotGen (initPlot, genConfig) {
+export function createPlotGen(initPlot, genConfig) {
   const { xScaleType, yScaleType } = genConfig;
   const xAxisType = scaleTypeToAxisType(xScaleType);
   const yAxisType = scaleTypeToAxisType(yScaleType);
@@ -46,4 +46,4 @@ export function createPlotGen (initPlot, genConfig) {
     );
     return { plot, xAxis, yAxis };
   };
-};
+}

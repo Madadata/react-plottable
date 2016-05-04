@@ -2,7 +2,7 @@ import { createPlotGen } from './plots';
 import { FILL } from '../config';
 import { bindInteraction } from './utils';
 
-function initBarPlot (
+function initBarPlot(
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
 ) {
   const bar = new Plottable.Plots.Bar('vertical')
@@ -24,7 +24,7 @@ function initBarPlot (
     config,
     defaultSelected
   );
-};
+}
 
 export const createBarPlot = createPlotGen(
   initBarPlot,

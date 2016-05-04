@@ -1,7 +1,7 @@
 import { HOVERED, FILL } from '../config';
 import _ from 'lodash';
 
-export function bindHoverPointerTo (plot) {
+export function bindHoverPointerTo(plot) {
   const interaction = new Plottable.Interactions.Pointer();
   interaction.onPointerMove(p => {
     _.forEach(plot.entities(), entity => {
@@ -13,9 +13,9 @@ export function bindHoverPointerTo (plot) {
   });
 
   interaction.attachTo(plot);
-};
+}
 
-export function bindToolTipPointerTo (plot) {
+export function bindToolTipPointerTo(plot) {
   // append tooltip div
   const tooltip = d3.select('body')
     .append('div')
@@ -44,4 +44,4 @@ export function bindToolTipPointerTo (plot) {
     });
   });
   interaction.attachTo(plot);
-};
+}

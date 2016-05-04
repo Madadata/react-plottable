@@ -29,7 +29,7 @@ const draggablePlots = Object.freeze([
   'scatter',
 ]);
 
-export function bindInteraction (
+export function bindInteraction(
   plot,
   plotName,
   xScale,
@@ -61,9 +61,9 @@ export function bindInteraction (
     throw new Error(`drag box is not supported by ${plotName}`);
   }
   return interactivePlot;
-};
+}
 
-export function bindInteractionToPlotGroup (
+export function bindInteractionToPlotGroup(
   plotGroup,
   onInteraction,
   config,
@@ -81,4 +81,4 @@ export function bindInteractionToPlotGroup (
     throw new Error('drag box is not supported by plotgroup');
   }
   return interactivePlotGroup;
-};
+}

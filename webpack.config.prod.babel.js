@@ -2,16 +2,17 @@ import { join } from 'path';
 
 export default {
   entry: './src/main.js',
-  ouput: {
+  output: {
     path: join(__dirname, 'dist'),
+    library: 'reactplottable',
     libraryTarget: 'umd',
-    library: 'react-plottable'
+    umdNamedDefine: true
   },
   devtool: 'source-map',
   module: {
     loaders: [
       {
-        text: /\.js$/,
+        test: /\.js$/,
         exclude: /(node_modules|bower_components)\//,
         loader: 'babel'
       }

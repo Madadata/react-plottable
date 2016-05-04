@@ -1,8 +1,7 @@
 import {
-  createLinePlot,
-  createTimeLinePlot,
-  createCategoryLinePlot
-} from '../../src/plots/line';
+  createClusteredBarPlot,
+  createTimeClusteredBarPlot
+} from '../../src/plots/clusteredbar';
 import {
   generateLinearData,
   generateTimeSeriesData,
@@ -13,28 +12,29 @@ import {
 
 import expect from 'expect';
 
-describe('Line Plot Tests', () => {
+describe('ClusteredBar Plot Tests', () => {
   let svg;
-  let line;
+  let clusteredbar;
   let data;
   let config;
 
   beforeEach(() => {
     svg = generateSVG();
-    data = generateLinearData(10);
+    data = [];
+    _.times(3, data.push(generateCategoryData(10)));
     config = new plotConfig().addOrientation().getConfig();
   });
 
   afterEach(() => {
-    line.destroy();
+    clusteredbar.destroy();
     svg.remove();
   });
 
-  describe('Func: createLinePlot', () => {
+  describe('Func: createClusteredBarPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: line } = createLinePlot(data, config));
-      line.renderTo(svg);
+      ({ plot: clusteredbar } = createClusteredBarPlot(data, config));
+      clusteredbar.renderTo(svg);
     });
 
   });

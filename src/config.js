@@ -20,6 +20,4 @@ export {
   GROUP_SELECTED,
   COLOR_RANGE,
   DEFAULT_WAIT,
-  Plottable,
-  d3,
 };

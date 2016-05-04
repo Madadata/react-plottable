@@ -1,20 +1,19 @@
 import { createPlotGen } from './plots';
-import { STROKE } from '../config';
 import { bindInteraction } from './utils';
+import { FILL, STROKE } from '../config';
 
-function initLinePlot (
-  { data, xScale, yScale, xAxis, yAxis, onInteraction, config }
-) {
-  const line = new Plottable.Plots.Line()
+function initAreaPlot ({ data, xScale, yScale, xAxis, yAxis, onInteraction, config }) {
+  const area = new Plottable.Plots.Area()
     .addDataset(new Plottable.Dataset(data))
     .x(d => (d.x), xScale)
     .y(d => (d.y), yScale)
+    .attr('fill', FILL)
     .attr('stroke', STROKE)
     .animated(true);
 
   return bindInteraction(
-    line,
-    'line',
+    area,
+    'area',
     xScale,
     yScale,
     xAxis,
@@ -24,24 +23,24 @@ function initLinePlot (
   );
 };
 
-export const createLinePlot = createPlotGen(
-  initLinePlot,
+export const createAreaPlot = createPlotGen(
+  initAreaPlot,
   {
     xScaleType: 'linear',
     yScaleType: 'linear',
   }
 );
 
-export const createTimeLinePlot = createPlotGen(
-  initLinePlot,
+export const createTimeAreaPlot = createPlotGen(
+  initAreaPlot,
   {
     xScaleType: 'time',
     yScaleType: 'linear',
   }
 );
 
-export const createCategoryLinePlot = createPlotGen(
-  initLinePlot,
+export const createCategoryAreaPlot = createPlotGen(
+  initAreaPlot,
   {
     xScaleType: 'category',
     yScaleType: 'linear',

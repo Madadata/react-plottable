@@ -15,7 +15,8 @@
     "build:umd": "webpack --output-filename react-plottable.umd.js --output-path dist --config webpack.config.prod.babel.js",
     "build:umd.min": "webpack --output-filename react-plottable.umd.min.js --output-path dist --config webpack.config.prod.babel.js -p",
     "build:dev": "npm run build:main && npm run build:test",
-    "test": "mocha-phantomjs ./test/tests.html"
+    "test": "mocha-phantomjs ./test/tests.html",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -75,7 +76,7 @@
       "path": "cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run lint && npm run cover"
+      "pre-commit": "npm run lint && npm run test"
     }
   }
 }

@@ -1,11 +1,7 @@
 import {
-  createLinePlot,
-  createTimeLinePlot,
-  createCategoryLinePlot
-} from '../../src/plots/line';
+  createPiePlot
+} from '../../src/plots/pie';
 import {
-  generateLinearData,
-  generateTimeSeriesData,
   generateCategoryData,
   generateSVG,
   plotConfig
@@ -13,28 +9,28 @@ import {
 
 import expect from 'expect';
 
-describe('Line Plot Tests', () => {
+describe('Pie Plot Tests', () => {
   let svg;
-  let line;
+  let pie;
   let data;
   let config;
 
   beforeEach(() => {
     svg = generateSVG();
-    data = generateLinearData(10);
+    data = generateCategoryData(10);
     config = new plotConfig().addOrientation().getConfig();
   });
 
   afterEach(() => {
-    line.destroy();
+    pie.destroy();
     svg.remove();
   });
 
-  describe('Func: createLinePlot', () => {
+  describe('Func: createBarPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: line } = createLinePlot(data, config));
-      line.renderTo(svg);
+      ({ plot: pie } = createPiePlot(data, config));
+      pie.renderTo(svg);
     });
 
   });

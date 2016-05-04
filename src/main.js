@@ -1,9 +1,3 @@
-// export * from './scales';
-// export * from './axes';
-// export * from './plots';
-// export * from './interactions';
-// export * from './tables';
-// export * from './render';
 import scales from './scales';
 import axes from './axes';
 import plots from './plots';

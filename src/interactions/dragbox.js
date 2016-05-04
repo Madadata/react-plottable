@@ -3,7 +3,7 @@ import _ from 'lodash';
 import $ from 'jquery';
 
 /* eslint-disable */
-function _bindDragBoxTo (plot, dragBox, onDrag, xScale, yScale, defaultSelected, plotName) {
+function _bindDragBoxTo(plot, dragBox, onDrag, xScale, yScale, defaultSelected, plotName) {
   let curBox;
   let curMin;
   let curMax;
@@ -98,9 +98,9 @@ function _bindDragBoxTo (plot, dragBox, onDrag, xScale, yScale, defaultSelected,
     }
   });
   return new Plottable.Components.Group([dragBox, plot]);
-};
+}
 /* eslint-enable */
-export function bindDragBoxTo (
+export function bindDragBoxTo(
   plot, dragBoxType, onDrag, xScale, yScale, defaultSelected, plotName
 ) {
   switch (dragBoxType) {
@@ -126,4 +126,4 @@ export function bindDragBoxTo (
     default:
       throw new Error(`The drag box type ${dragBoxType} is not supported`);
   }
-};
+}

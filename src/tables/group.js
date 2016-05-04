@@ -1,7 +1,7 @@
 import plots from '../plots';
 import _ from 'lodash';
 
-function createLinearPlot (generic2DPlotConfig, onInteraction) {
+function createLinearPlot(generic2DPlotConfig, onInteraction) {
   const { data, type, config } = generic2DPlotConfig;
   switch (type) {
     case 'line':
@@ -19,9 +19,9 @@ function createLinearPlot (generic2DPlotConfig, onInteraction) {
     default:
       throw new Error(`2D plot type ${type} is not supported with linear-linear scales`);
   }
-};
+}
 
-function createCategoryPlot (generic2DPlotConfig, onInteraction) {
+function createCategoryPlot(generic2DPlotConfig, onInteraction) {
   const { data, type, config, defaultSelected } = generic2DPlotConfig;
   switch (type) {
     case 'line':
@@ -43,9 +43,9 @@ function createCategoryPlot (generic2DPlotConfig, onInteraction) {
     default:
       throw new Error(`2D plot type ${type} is not supported with category-linear scales`);
   }
-};
+}
 
-function createTimeSeriesPlot (generic2DPlotConfig, onInteraction) {
+function createTimeSeriesPlot(generic2DPlotConfig, onInteraction) {
   const { data, type, config, defaultSelected } = generic2DPlotConfig;
   switch (type) {
     case 'line':
@@ -63,9 +63,9 @@ function createTimeSeriesPlot (generic2DPlotConfig, onInteraction) {
     default:
       throw new Error(`2D plot type ${type} is not supported`);
   }
-};
+}
 
-export function createSingle2DPlot (generic2DPlotConfig, xType, onInteraction) {
+export function createSingle2DPlot(generic2DPlotConfig, xType, onInteraction) {
   let plot;
   let xAxis;
   let yAxis;
@@ -84,9 +84,9 @@ export function createSingle2DPlot (generic2DPlotConfig, xType, onInteraction) {
       throw new Error(`The xAxis Type ${xType} is not supported`);
   }
   return { plot, xAxis, yAxis };
-};
+}
 
-export function createDouble2DPlot (generic2DPlotConfigArray, xAxisType) {
+export function createDouble2DPlot(generic2DPlotConfigArray, xAxisType) {
   const { xAxis,
           plot: plot1,
           yAxis: y1Axis } = createSingle2DPlot(generic2DPlotConfigArray[0], xAxisType);
@@ -94,9 +94,9 @@ export function createDouble2DPlot (generic2DPlotConfigArray, xAxisType) {
           yAxis: y2Axis } = createSingle2DPlot(generic2DPlotConfigArray[1], xAxisType);
   const group = new Plottable.Components.Group([plot1, plot2]);
   return { group, xAxis, y1Axis, y2Axis };
-};
+}
 
-export function createMultiple2DPlot (generic2DPlotConfigArray, xAxisType) {
+export function createMultiple2DPlot(generic2DPlotConfigArray, xAxisType) {
   const plotArr = [];
   _.forEach(generic2DPlotConfigArray, generic2DPlotConfig => {
     const { plot } = createSingle2DPlot(generic2DPlotConfig, xAxisType);
@@ -106,9 +106,9 @@ export function createMultiple2DPlot (generic2DPlotConfigArray, xAxisType) {
   const { xAxis } = createSingle2DPlot(generic2DPlotConfigArray[0], xAxisType);
   const group = new Plottable.Components.Group(plotArr);
   return { group, xAxis };
-};
+}
 
-export function createPlotGroup (generic2DPlotConfigArray, xAxisType, onInteraction) {
+export function createPlotGroup(generic2DPlotConfigArray, xAxisType, onInteraction) {
   if (generic2DPlotConfigArray.length < 2) {
     throw new Error('You don\'t have to use plotGroup with only one plot');
   } else if (generic2DPlotConfigArray.length === 2) {
@@ -150,4 +150,4 @@ export function createPlotGroup (generic2DPlotConfigArray, xAxisType, onInteract
     const { xAxis } = createSingle2DPlot(generic2DPlotConfigArray[0], xAxisType);
     return { group: plotGroup, xAxis };
   }
-};
+}

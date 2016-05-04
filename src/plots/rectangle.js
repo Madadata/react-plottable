@@ -3,7 +3,7 @@ import { createScale } from '../scales';
 import { bindInteraction } from './utils';
 import { COLOR_RANGE } from '../config';
 
-function initRectanglePlot (
+function initRectanglePlot(
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
 ) {
   // assume data to be [{x: dimensionA, y: dimensionB, z: count},...]
@@ -26,7 +26,7 @@ function initRectanglePlot (
     config,
     defaultSelected
   );
-};
+}
 
 export const createRectanglePlot = createPlotGen(
   initRectanglePlot,

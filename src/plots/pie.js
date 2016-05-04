@@ -3,7 +3,7 @@ import { COLOR_RANGE } from '../config';
 import { bindInteraction } from './utils';
 import _ from 'lodash';
 
-function initPiePlot (
+function initPiePlot(
   { data, xScale, cScale, xAxis, yAxis, onInteraction, config, defaultSelected }
 ) {
   // this map function is ad hoc. It won't work well
@@ -34,7 +34,7 @@ function initPiePlot (
     config,
     defaultSelected
   );
-};
+}
 
 export function createPiePlot(data, config, onInteraction, defaultSelected) {
   const xScale = createScale('linear');

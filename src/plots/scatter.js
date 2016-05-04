@@ -2,7 +2,7 @@ import { createPlotGen } from './plots';
 import { bindInteraction } from './utils';
 import { FILL } from '../config';
 
-function initScatterPlot (
+function initScatterPlot(
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
 ) {
   const scatter = new Plottable.Plots.Scatter()
@@ -23,7 +23,7 @@ function initScatterPlot (
     config,
     defaultSelected
   );
-};
+}
 
 export const createScatterPlot = createPlotGen(
   initScatterPlot,

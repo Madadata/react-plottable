@@ -1,6 +1,6 @@
 const axes = {};
 
-function createAxis (scale, orientation, type) {
+function createAxis(scale, orientation, type) {
   if (!(!!scale && !!orientation && !!type)) {
     throw new Error('scale, orientation and type should be provided');
   }
@@ -14,9 +14,9 @@ function createAxis (scale, orientation, type) {
     default:
       throw new Error(`the axis type ${type} is not supported`);
   }
-};
+}
 
-function createAxes ({ xConfig, yConfig }) {
+function createAxes({ xConfig, yConfig }) {
   if (!(!!xConfig && !!yConfig)) {
     throw new Error('xConfig and yConfig should be provided');
   }
@@ -25,7 +25,7 @@ function createAxes ({ xConfig, yConfig }) {
   const xAxis = createAxis(xScale, xOrientation, xType);
   const yAxis = createAxis(yScale, yOrientation, yType);
   return { xAxis, yAxis };
-};
+}
 
 axes.createAxis = createAxis;
 axes.createAxes = createAxes;

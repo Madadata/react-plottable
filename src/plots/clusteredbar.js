@@ -4,7 +4,7 @@ import { bindInteraction } from './utils';
 import { COLOR_RANGE } from '../config';
 import _ from 'lodash';
 
-function initClusteredBarPlot ({
+function initClusteredBarPlot({
   data: dataCollections,
   xScale,
   yScale,
@@ -37,7 +37,7 @@ function initClusteredBarPlot ({
     config,
     defaultSelected
   );
-};
+}
 
 export const createClusteredBarPlot = createPlotGen(
   initClusteredBarPlot,

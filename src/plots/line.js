@@ -2,7 +2,7 @@ import { createPlotGen } from './plots';
 import { STROKE } from '../config';
 import { bindInteraction } from './utils';
 
-function initLinePlot (
+function initLinePlot(
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config }
 ) {
   const line = new Plottable.Plots.Line()
@@ -22,7 +22,7 @@ function initLinePlot (
     onInteraction,
     config
   );
-};
+}
 
 export const createLinePlot = createPlotGen(
   initLinePlot,

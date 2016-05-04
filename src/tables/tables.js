@@ -9,7 +9,7 @@ import {
   createMultiple2DPlotLabels } from './labels';
 import { regroup } from './utils';
 
-export function initSinglePlotTable (singlePlotConfig) {
+export function initSinglePlotTable(singlePlotConfig) {
   const { plot, xAxis, yAxis, xLabel, yLabel, titleLabel } = singlePlotConfig;
   if (!!xAxis) {
     const table = new Plottable.Components.Table([
@@ -25,9 +25,9 @@ export function initSinglePlotTable (singlePlotConfig) {
     [plot],
   ]);
   return table;
-};
+}
 
-export function initDoublePlotTable (doublePlotConfig) {
+export function initDoublePlotTable(doublePlotConfig) {
   const {
           group,
           xAxis,
@@ -45,9 +45,9 @@ export function initDoublePlotTable (doublePlotConfig) {
     [null, null, xLabel, null, null],
   ]);
   return table;
-};
+}
 
-export function initMultiplePlotTable (multiplePlotConfig) {
+export function initMultiplePlotTable(multiplePlotConfig) {
   const {
           group,
           xAxis,
@@ -61,9 +61,9 @@ export function initMultiplePlotTable (multiplePlotConfig) {
     [xLabel],
   ]);
   return table;
-};
+}
 
-export function createTable ({ content, config: { types, isPlotGroup } }, onInteraction) {
+export function createTable({ content, config: { types, isPlotGroup } }, onInteraction) {
   const xType = types[0];
   const plotCollections = regroup(content);
   if (plotCollections.length === 0) {
@@ -135,8 +135,8 @@ export function createTable ({ content, config: { types, isPlotGroup } }, onInte
       return table;
     }
   }
-};
+}
 
-export function drawTable (table, ref) {
+export function drawTable(table, ref) {
   table.renderTo(ref);
-};
+}

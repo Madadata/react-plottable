@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Example Line</title>
+  <title>Example: Multi-lines</title>
   <link rel="stylesheet" href="../bower_components/plottable/plottable.css" />
 </head>
 <body>
@@ -16,28 +16,28 @@
   var tableConfig = {
     content: [
       {
-        data: [
-          { x: 1, y: 10 },
-          { x: 2, y: 5 },
-          { x: 3, y: 6 },
-          { x: 4, y: 1 },
-          { x: 5, y: 3 },
-          { x: 6, y: 10 },
-          { x: 7, y: 8 },
-          { x: 8, y: 2 },
-          { x: 9, y: 7 }
-        ],
         // data: [
-        //   { x: '1', y: 10 },
-        //   { x: '2', y: 5 },
-        //   { x: '3', y: 6 },
-        //   { x: '4', y: 1 },
-        //   { x: '5', y: 3 },
-        //   { x: '6', y: 10 },
-        //   { x: '7', y: 8 },
-        //   { x: '8', y: 2 },
-        //   { x: '9', y: 7 }
+        //   { x: 1, y: 10 },
+        //   { x: 2, y: 5 },
+        //   { x: 3, y: 6 },
+        //   { x: 4, y: 1 },
+        //   { x: 5, y: 3 },
+        //   { x: 6, y: 10 },
+        //   { x: 7, y: 8 },
+        //   { x: 8, y: 2 },
+        //   { x: 9, y: 7 }
         // ],
+        data: [
+          { x: '1', y: 10 },
+          { x: '2', y: 5 },
+          { x: '3', y: 6 },
+          { x: '4', y: 1 },
+          { x: '5', y: 3 },
+          { x: '6', y: 10 },
+          { x: '7', y: 8 },
+          { x: '8', y: 2 },
+          { x: '9', y: 7 }
+        ],
         type: 'line',
         config: {
           xOrientation: 'bottom',
@@ -47,10 +47,32 @@
           ylabel: 'y',
           clickable: true,
         }
+      },
+      {
+        data: [
+          { x: '1', y: 1 },
+          { x: '2', y: 2 },
+          { x: '3', y: 4 },
+          { x: '4', y: 10 },
+          { x: '5', y: 7 },
+          { x: '6', y: 8 },
+          { x: '7', y: 2 },
+          { x: '8', y: 1 },
+          { x: '9', y: 9 }
+        ],
+        type: 'line',
+        config: {
+          xOrientation: 'bottom',
+          yOrientation: 'right',
+          title: 'plottable',
+          xlabel: 'x',
+          ylabel: 'y'
+        }
       }
     ],
     config: {
-      types: ['string', 'number']
+      types: ['string', 'number'],
+      isPlotGroup: true
     }
   };
   var onInteraction = function(selected) {

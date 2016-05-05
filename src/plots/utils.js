@@ -71,7 +71,7 @@ export function bindInteractionToPlotGroup(
 ) {
   const { dragBoxType, clickable, panZoomType } = config;
   const interactivePlotGroup = plotGroup;
-  if (!!clickable && clickablePlots.has('plotgroup')) {
+  if (!!clickable && _.includes(clickablePlots, 'plotgroup')) {
     interactions.bindClickTo(interactivePlotGroup, onInteraction, defaultSelected);
   }
   if (!!panZoomType) {

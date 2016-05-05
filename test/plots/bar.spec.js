@@ -1,17 +1,9 @@
-import {
-  createBarPlot,
-  createTimeBarPlot,
-  createCategoryBarPlot
-} from '../../src/plots/bar';
-import {
-  generateLinearData,
-  generateTimeSeriesData,
-  generateCategoryData,
-  generateSVG,
-  plotConfig
-} from '../testUtils/';
-
 import expect from 'expect';
+import {
+  generateSVG,
+  generateCategoryData,
+  plotConfig
+} from '../testUtils';
 
 describe('Bar Plot Tests', () => {
   let svg;
@@ -36,7 +28,7 @@ describe('Bar Plot Tests', () => {
   describe('Func: createBarPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: bar } = createBarPlot(data, config));
+      ({ plot: bar } = reactplottable.plots.bar.createBarPlot(data, config));
       bar.renderTo(svg);
     });
 

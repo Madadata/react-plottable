@@ -1,5 +1,5 @@
 import { createPlotGen } from './plots';
-import { createScale } from '../scales';
+import scales from '../scales';
 import { bindInteraction } from './utils';
 import { COLOR_RANGE } from '../config';
 
@@ -7,7 +7,7 @@ function initRectanglePlot(
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
 ) {
   // assume data to be [{x: dimensionA, y: dimensionB, z: count},...]
-  const cScale = createScale('interpolatedcolor', COLOR_RANGE);
+  const cScale = scales.createScale('interpolatedcolor', COLOR_RANGE);
   const rectangle = new Plottable.Plots.Rectangle()
     .addDataset(new Plottable.Dataset(data))
     .x(d => (d.x), xScale)

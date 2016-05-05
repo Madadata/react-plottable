@@ -1,13 +1,11 @@
-import {
-  createPiePlot
-} from '../../src/plots/pie';
-import {
-  generateCategoryData,
-  generateSVG,
-  plotConfig
-} from '../testUtils/';
-
 import expect from 'expect';
+import {
+  generateSVG,
+  generateCategoryData,
+  plotConfig
+} from '../testUtils';
+
+const createScale = reactplottable.scales.createScale;
 
 describe('Pie Plot Tests', () => {
   let svg;
@@ -26,10 +24,10 @@ describe('Pie Plot Tests', () => {
     svg.remove();
   });
 
-  describe('Func: createBarPlot', () => {
+  describe('Func: createPiePlot', () => {
 
     it('should run without error', () => {
-      ({ plot: pie } = createPiePlot(data, config));
+      ({ plot: pie } = reactplottable.plots.pie.createPiePlot(data, config));
       pie.renderTo(svg);
     });
 

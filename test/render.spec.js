@@ -1,13 +1,8 @@
 import {
-  generateLinearData,
   generateSVG,
+  generateLinearData,
   plotConfig
-} from './testUtils/';
-
-import {
-  renderChart
-} from '../src/render';
-
+} from './testUtils';
 import expect from 'expect';
 
 describe('Render Tests', () => {
@@ -41,7 +36,7 @@ describe('Render Tests', () => {
   describe('Func: renderChart', () => {
 
     it('should run without error', () => {
-      table = renderChart(tableConfig, svg, onInteraction);
+      table = reactplottable.render.renderChart(tableConfig, svg, onInteraction);
     });
 
   });

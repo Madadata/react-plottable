@@ -1,16 +1,10 @@
-import {
-  createClusteredBarPlot,
-  createTimeClusteredBarPlot
-} from '../../src/plots/clusteredbar';
-import {
-  generateLinearData,
-  generateTimeSeriesData,
-  generateCategoryData,
-  generateSVG,
-  plotConfig
-} from '../testUtils/';
-
 import expect from 'expect';
+import {
+  generateSVG,
+  generateCategoryData,
+  plotConfig
+} from '../testUtils';
+
 
 describe('ClusteredBar Plot Tests', () => {
   let svg;
@@ -33,7 +27,7 @@ describe('ClusteredBar Plot Tests', () => {
   describe('Func: createClusteredBarPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: clusteredbar } = createClusteredBarPlot(data, config));
+      ({ plot: clusteredbar } = reactplottable.plots.clusteredbar.createClusteredBarPlot(data, config));
       clusteredbar.renderTo(svg);
     });
 

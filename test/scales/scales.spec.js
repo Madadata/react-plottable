@@ -1,8 +1,7 @@
-import {
-  createScale,
-  createScales
-} from '../../src/scales/scales';
 import expect from 'expect';
+
+const createScale = reactplottable.scales.createScale;
+const createScales = reactplottable.scales.createScales;
 
 describe('Scales Tests:', () => {
   describe('Func: createScale', () => {

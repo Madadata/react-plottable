@@ -1,4 +1,4 @@
-import { createScale } from '../scales';
+import scales from '../scales';
 import { createPlotGen } from './plots';
 import { bindInteraction } from './utils';
 import { COLOR_RANGE } from '../config';
@@ -14,7 +14,7 @@ function initClusteredBarPlot({
   config,
   defaultSelected,
 }) {
-  const cScale = createScale('interpolatedcolor', COLOR_RANGE);
+  const cScale = scales.createScale('interpolatedcolor', COLOR_RANGE);
   const clusteredBar = new Plottable.Plots.ClusteredBar();
   const collectionNum = dataCollections.length;
   _.forEach(dataCollections, (dataCollection, idx) => {

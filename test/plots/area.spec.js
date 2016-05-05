@@ -1,15 +1,9 @@
-import {
-  createAreaPlot,
-  createTimeAreaPlot,
-  createCategoryAreaPlot
-} from '../../src/plots/area';
-import {
-  generateLinearData,
-  generateSVG,
-  plotConfig
-} from '../testUtils/';
-
 import expect from 'expect';
+import {
+  generateSVG,
+  generateLinearData,
+  plotConfig
+} from '../testUtils';
 
 describe('Area Plot Tests', () => {
   let svg;
@@ -31,7 +25,7 @@ describe('Area Plot Tests', () => {
   describe('Func: createAreaPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: area } = createAreaPlot(data, config));
+      ({ plot: area } = reactplottable.plots.area.createAreaPlot(data, config));
       area.renderTo(svg);
     });
 

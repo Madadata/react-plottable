@@ -1,4 +1,4 @@
-import { createScale } from '../scales';
+import scales from '../scales';
 import { COLOR_RANGE } from '../config';
 import { bindInteraction } from './utils';
 import _ from 'lodash';
@@ -37,8 +37,8 @@ function initPiePlot(
 }
 
 export function createPiePlot(data, config, onInteraction, defaultSelected) {
-  const xScale = createScale('linear');
-  const cScale = createScale('interpolatedcolor', COLOR_RANGE);
+  const xScale = scales.createScale('linear');
+  const cScale = scales.createScale('interpolatedcolor', COLOR_RANGE);
   const plot = initPiePlot({ data, xScale, cScale, onInteraction, config, defaultSelected });
   return { plot };
 }

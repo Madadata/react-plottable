@@ -1,13 +1,10 @@
-import {
-  createRectanglePlot
-} from '../../src/plots/rectangle';
-import {
-  generateRectangleData,
-  generateSVG,
-  plotConfig
-} from '../testUtils/';
-
 import expect from 'expect';
+import {
+  generateSVG,
+  generateRectangleData,
+  plotConfig
+} from '../testUtils';
+
 
 describe('Rectangle Plot Tests', () => {
   let svg;
@@ -29,7 +26,7 @@ describe('Rectangle Plot Tests', () => {
   describe('Func: createBarPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: rectangle } = createRectanglePlot(data, config));
+      ({ plot: rectangle } = reactplottable.plots.rectangle.createRectanglePlot(data, config));
       rectangle.renderTo(svg);
     });
 

@@ -1,17 +1,10 @@
-import {
-  createScatterPlot,
-  createTimeScatterPlot,
-  createCategoryScatterPlot
-} from '../../src/plots/scatter';
-import {
-  generateLinearData,
-  generateTimeSeriesData,
-  generateCategoryData,
-  generateSVG,
-  plotConfig
-} from '../testUtils/';
-
 import expect from 'expect';
+import {
+  generateSVG,
+  generateLinearData,
+  plotConfig
+} from '../testUtils';
+
 
 describe('Scatter Plot Tests', () => {
   let svg;
@@ -33,7 +26,7 @@ describe('Scatter Plot Tests', () => {
   describe('Func: createScatterPlot', () => {
 
     it('should run without error', () => {
-      ({ plot: scatter } = createScatterPlot(data, config));
+      ({ plot: scatter } = reactplottable.plots.scatter.createScatterPlot(data, config));
       scatter.renderTo(svg);
     });
 

@@ -1,12 +1,8 @@
-import {
-  createAxis,
-  createAxes
-} from '../../src/axes/axes';
-import {
-  createScale,
-  createScales
-} from '../../src/scales/scales';
 import expect from 'expect';
+
+const createScale = reactplottable.scales.createScale;
+const createAxis = reactplottable.axes.createAxis;
+const createAxes = reactplottable.axes.createAxes;
 
 describe('Axes Test', () => {
   const linearScale = createScale('linear');

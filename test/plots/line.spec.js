@@ -1,17 +1,10 @@
-import {
-  createLinePlot,
-  createTimeLinePlot,
-  createCategoryLinePlot
-} from '../../src/plots/line';
-import {
-  generateLinearData,
-  generateTimeSeriesData,
-  generateCategoryData,
-  generateSVG,
-  plotConfig
-} from '../testUtils/';
-
 import expect from 'expect';
+import {
+  generateSVG,
+  generateLinearData,
+  plotConfig
+} from '../testUtils';
+
 
 describe('Line Plot Tests', () => {
   let svg;
@@ -33,7 +26,7 @@ describe('Line Plot Tests', () => {
   describe('Func: createLinePlot', () => {
 
     it('should run without error', () => {
-      ({ plot: line } = createLinePlot(data, config));
+      ({ plot: line } = reactplottable.plots.line.createLinePlot(data, config));
       line.renderTo(svg);
     });
 

@@ -5,7 +5,7 @@ function createLinearPlot(generic2DPlotConfig, onInteraction) {
   const { data, type, config } = generic2DPlotConfig;
   switch (type) {
     case 'line':
-      return plots.line.createLinePlot(data, config);
+      return plots.line.createLinePlot(data, config, onInteraction);
     case 'area':
       return plots.area.createAreaPlot(data, config);
     case 'bar':

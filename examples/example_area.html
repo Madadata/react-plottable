@@ -9,7 +9,7 @@
 <script type="text/javascript" src="../bower_components/lodash/lodash.js"></script>
 <script type="text/javascript" src="../bower_components/jQuery/dist/jquery.js"></script>
 <script type="text/javascript" src="../bower_components/d3/d3.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="../bower_components/plottable/plottable.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../bower_components/plottable/plottable.js" charset="UTF-8"></script>
 <script type="text/javascript" src="../dist/react-plottable.umd.js"></script>
 <script type="text/javascript">
   var svg = d3.select('svg#plottable');
@@ -27,51 +27,24 @@
           { x: 8, y: 2 },
           { x: 9, y: 7 }
         ],
-        type: 'bar',
+        type: 'area',
         config: {
           xOrientation: 'bottom',
           yOrientation: 'left',
           title: 'plottable',
           xlabel: 'x',
           ylabel: 'y',
-          dragBoxType: 'x'
           // clickable: true
         }
       }
     ],
     config: {
-      types: ['number', 'number'],
-      isPlotGroup: false
+      types: ['number', 'number']
     }
   };
-  const activeElements = [];
-  function onClick(element) {
-    if (_.indexOf(activeElements, element) >= 0) {
-      _.remove(activeElements, function(activeElement) {
-        return activeElement === element;
-      })
-    } else {
-      activeElements.push(element);
-    }
-    console.log(activeElements);
-  }
-
-  function onDrag(elements) {
-    console.log(elements);
-  }
-
-  function onInteraction(selected, type) {
-    switch (type) {
-      case 'click':
-        onClick(selected);
-        break;
-      case 'drag':
-        onDrag(selected);
-        break;
-      default:
-        throw new Error('not supported');
-    }
-  }
+  var onInteraction = function(selected) {
+    console.log(selected);
+  };
   reactplottable.render.renderChart(tableConfig, svg, onInteraction);
 </script>
 </body>

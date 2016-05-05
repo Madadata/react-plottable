@@ -35,6 +35,7 @@
           xlabel: 'x',
           ylabel: 'y',
           dragBoxType: 'x'
+          // clickable: true
         }
       }
     ],
@@ -42,9 +43,37 @@
       types: ['number', 'number']
     }
   };
-  var onInteraction = function(selected) {
-    console.log(selected);
-  };
+  // var onInteraction = function(selected) {
+  //   console.log(selected);
+  // };
+  const activeElements = [];
+  function onClick(element) {
+    if (_.indexOf(activeElements, element) >= 0) {
+      _.remove(activeElements, function(activeElement) {
+        return activeElement === element;
+      })
+    } else {
+      activeElements.push(element);
+    }
+    console.log(activeElements);
+  }
+
+  function onDrag(elements) {
+    console.log(elements);
+  }
+
+  function onInteraction(selected, type) {
+    switch (type) {
+      case 'click':
+        onClick(selected);
+        break;
+      case 'drag':
+        onDrag(selected);
+        break;
+      default:
+        throw new Error('not supported');
+    }
+  }
   reactplottable.render.renderChart(tableConfig, svg, onInteraction);
 </script>
 </body>

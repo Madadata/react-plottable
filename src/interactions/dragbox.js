@@ -1,4 +1,10 @@
-import { FILL, SELECTED, DEFAULT_WAIT } from '../config';
+import {
+  FILL,
+  STROKE,
+  SELECTED_FILL,
+  SELECTED_STROKE,
+  DEFAULT_WAIT,
+} from '../config';
 import _ from 'lodash';
 import $ from 'jquery';
 
@@ -26,7 +32,8 @@ function _bindDragBoxTo(plot, dragBox, onDrag, xScale, yScale, defaultSelected, 
           const datum = selection.datum();
           _.forEach(defaultSelected, point => {
             if (point.x === datum.x && point.y === datum.y) {
-              selection.attr('fill', SELECTED);
+              selection.attr('fill', SELECTED_FILL);
+              selection.attr('stroke', SELECTED_STROKE)
               defaultSelectedData.push(datum);
             }
           });
@@ -43,9 +50,11 @@ function _bindDragBoxTo(plot, dragBox, onDrag, xScale, yScale, defaultSelected, 
   });
   dragBox.onDrag(box => {
     plot.selections().attr('fill', FILL);
+    plot.selections().attr('stroke', STROKE);
     if (plotName !== 'line') {
       plot.entitiesIn(box).forEach(entity => {
-        entity.selection.attr('fill', SELECTED);
+        entity.selection.attr('fill', SELECTED_FILL);
+        entity.selection.attr('stroke', SELECTED_STROKE);
       });
     }
   });
@@ -91,7 +100,7 @@ function _bindDragBoxTo(plot, dragBox, onDrag, xScale, yScale, defaultSelected, 
       // reset the attr of plot
       plot.attr('fill', (d) => {
         if (dataInBoxSet.has(d)) {
-          return SELECTED;
+          return SELECTED_FILL;
         }
         return FILL;
       });

@@ -17,30 +17,29 @@
     content: [
       {
         data: [
-          { x: 1, y: 10 },
-          { x: 2, y: 5 },
-          { x: 3, y: 6 },
-          { x: 4, y: 1 },
-          { x: 5, y: 3 },
-          { x: 6, y: 10 },
-          { x: 7, y: 8 },
-          { x: 8, y: 2 },
-          { x: 9, y: 7 }
+          { x: 'a', y: 'x', z: 5 },
+          { x: 'a', y: 'y', z: 2 },
+          { x: 'a', y: 'z', z: 3 },
+          { x: 'b', y: 'x', z: 1 },
+          { x: 'b', y: 'y', z: 4 },
+          { x: 'b', y: 'z', z: 6 },
+          { x: 'c', y: 'x', z: 9 },
+          { x: 'c', y: 'y', z: 8 },
+          { x: 'c', y: 'z', z: 10 }
         ],
-        type: 'bar',
+        type: 'rectangle',
         config: {
           xOrientation: 'bottom',
           yOrientation: 'left',
           title: 'plottable',
           xlabel: 'x',
           ylabel: 'y',
-          dragBoxType: 'x'
-          // clickable: true
+          clickable: true
         }
       }
     ],
     config: {
-      types: ['number', 'number'],
+      types: ['string', 'string', 'number'],
       isPlotGroup: false
     }
   };

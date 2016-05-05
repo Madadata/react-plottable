@@ -1,5 +1,5 @@
 import { createPlotGen } from './plots';
-import { STROKE } from '../config';
+import { LINE_STROKE } from '../config';
 import { bindInteraction } from './utils';
 
 function initLinePlot(
@@ -9,7 +9,7 @@ function initLinePlot(
     .addDataset(new Plottable.Dataset(data))
     .x(d => (d.x), xScale)
     .y(d => (d.y), yScale)
-    .attr('stroke', STROKE)
+    .attr('stroke', LINE_STROKE)
     .animated(true);
 
   return bindInteraction(

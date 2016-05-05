@@ -1,7 +1,7 @@
 import { createPlotGen } from './plots';
 import scales from '../scales';
 import { bindInteraction } from './utils';
-import { COLOR_RANGE } from '../config';
+import { COLOR_RANGE, STROKE } from '../config';
 
 function initRectanglePlot(
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
@@ -13,6 +13,7 @@ function initRectanglePlot(
     .x(d => (d.x), xScale)
     .y(d => (d.y), yScale)
     .attr('fill', d => (d.z), cScale)
+    .attr('stroke', STROKE)
     .animated(true);
 
   return bindInteraction(

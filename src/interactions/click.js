@@ -1,4 +1,10 @@
-import { SELECTED, DEFAULT_WAIT } from '../config';
+import {
+  SELECTED_FILL,
+  SELECTED_STROKE,
+  LINE_STROKE,
+  LINE_SELECTED_STROKE,
+  DEFAULT_WAIT,
+} from '../config';
 import _ from 'lodash';
 import $ from 'jquery';
 
@@ -14,7 +20,8 @@ export function bindClickTo(plot, onClick, defaultSelected) {
           _.forEach(defaultSelected, point => {
             if (point.x === datum.x && point.y === datum.y) {
               selection.attr('oriFill', selection.attr('fill'));
-              selection.attr('fill', SELECTED);
+              selection.attr('fill', SELECTED_FILL);
+              selection.attr('stroke', SELECTED_STROKE);
               onClick(datum, 'click');
             }
           });
@@ -31,16 +38,35 @@ export function bindClickTo(plot, onClick, defaultSelected) {
     if (!selection.attr('ostroke')) {
       selection.attr('ostroke', selection.attr('stroke'));
     }
-    if (selection.attr('fill') !== SELECTED) {
-      selection.attr('fill', SELECTED);
-    } else {
-      selection.attr('fill', selection.attr('ofill'));
+
+    switch (selection.attr('fill')) {
+      case SELECTED_FILL:
+        selection.attr('fill', selection.attr('ofill'));
+        break;
+      case selection.attr('ofill'):
+        selection.attr('fill', SELECTED_FILL);
+        break;
+      default:
+        throw new Error('Unexpected fill color');
     }
-    if (selection.attr('stroke') !== SELECTED) {
-      selection.attr('stroke', SELECTED);
-    } else {
-      selection.attr('stroke', selection.attr('ostroke'));
+
+    switch (selection.attr('stroke')) {
+      case LINE_STROKE:
+        selection.attr('stroke', LINE_SELECTED_STROKE);
+        break;
+      case LINE_SELECTED_STROKE:
+        selection.attr('stroke', LINE_STROKE);
+        break;
+      case SELECTED_STROKE:
+        selection.attr('stroke', selection.attr('ostroke'));
+        break;
+      case selection.attr('ostroke'):
+        selection.attr('stroke', SELECTED_STROKE);
+        break;
+      default:
+        throw new Error('Unexpected stroke color');
     }
+
     onClick(selection.datum(), 'click');
   });
   interaction.attachTo(plot);

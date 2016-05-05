@@ -1,5 +1,5 @@
 import { createPlotGen } from './plots';
-import { FILL } from '../config';
+import { FILL, STROKE } from '../config';
 import { bindInteraction } from './utils';
 
 function initBarPlot(
@@ -10,7 +10,7 @@ function initBarPlot(
     .x(d => (d.x), xScale)
     .y(d => (d.y), yScale)
     .attr('fill', FILL)
-    .attr('stroke', FILL)
+    .attr('stroke', STROKE)
     .animated(true);
 
   return bindInteraction(

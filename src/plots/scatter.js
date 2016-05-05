@@ -1,6 +1,6 @@
 import { createPlotGen } from './plots';
 import { bindInteraction } from './utils';
-import { FILL } from '../config';
+import { FILL, STROKE } from '../config';
 
 function initScatterPlot(
   { data, xScale, yScale, xAxis, yAxis, onInteraction, config, defaultSelected }
@@ -10,6 +10,7 @@ function initScatterPlot(
     .x(d => (d.x), xScale)
     .y(d => (d.y), yScale)
     .attr('fill', FILL)
+    .attr('stroke', STROKE)
     .animated(true);
 
   return bindInteraction(

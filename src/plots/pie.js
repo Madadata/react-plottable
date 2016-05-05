@@ -17,8 +17,8 @@ function initPiePlot(
   );
 
   const pie = new Plottable.Plots.Pie()
-    .attr('fill', d => (d.y), cScale)
     .addDataset(new Plottable.Dataset(data))
+    .attr('fill', d => (d.y), cScale)
     .sectorValue(d => (d.y), xScale)
     .labelsEnabled(true)
     .labelFormatter(y => (reverseMap[y]));

@@ -2,7 +2,6 @@ const STRONG_CYAN = 'rgb(33, 206, 153)';
 const BRIGHT_RED = 'rgb(244, 85, 49)';
 const DARK_CYAN = 'rgb(14, 88, 65)';
 const SOFT_CYAN = 'rgb(140, 237, 207)';
-// const LIGHT_GRAY = 'rgb(240, 240, 240)';
 const WHITE = 'rgb(255, 255, 255)';
 
 const FILL = STRONG_CYAN;

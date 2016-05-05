@@ -31,7 +31,17 @@ export function bindClickTo(plot, onClick, defaultSelected) {
   }
 
   interaction.onClick(point => {
-    const selection = plot.entityNearest(point).selection;
+    let selection;
+    try {
+      selection = plot.entitiesAt(point)[0].selection;
+    } catch (e) {
+      if (e instanceof TypeError) {
+        selection = plot.entityNearest(point).selection;
+      } else {
+        throw new Error('The plot should have the entitiesAt or the entityNearest api');
+      }
+    }
+
     if (!selection.attr('ofill')) {
       selection.attr('ofill', selection.attr('fill'));
     }

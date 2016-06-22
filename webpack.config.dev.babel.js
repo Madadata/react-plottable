@@ -9,7 +9,7 @@ export default {
   devServer: {
     inline: true,
     contentBase: './dist',
-    port: 3002
+    port: 3000
   },
   module: {
     loaders: [

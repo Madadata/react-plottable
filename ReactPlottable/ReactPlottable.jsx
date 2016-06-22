@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { render } from './src/main';
+import { render } from '../lib/main';
 import $ from 'jquery';
 import arePropsValid from './helpers';
 

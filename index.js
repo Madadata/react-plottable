@@ -1,2 +1,2 @@
-import ReactPlottable from './ReactPlottable.jsx';
-export default ReactPlottable;
+const ReactPlottable = require('./lib-react/ReactPlottable.js').default;
+module.exports = ReactPlottable;

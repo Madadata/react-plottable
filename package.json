@@ -1,7 +1,7 @@
 {
   "name": "react-plottable",
   "version": "0.0.2",
-  "description": "",
+  "description": "using plottable with react",
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
@@ -28,14 +28,20 @@
     "type": "git",
     "url": "git+https://github.com/Madadata/react-plottable.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react", "plottable", "es6"
+  ],
+  "author": "Madadata",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Madadata/react-plottable/issues"
   },
   "homepage": "https://github.com/Madadata/react-plottable#readme",
-  "dependencies": {},
+  "dependencies": {
+    "d3": "^3.5.17",
+    "lodash": "^4.13.1",
+    "plottable": "^2.2.0"
+  },
   "devDependencies": {
     "babel-cli": "6.10.1",
     "babel-core": "^6.10.4",

@@ -6,8 +6,8 @@
     }
   },
   "globals": {
-        "Plottable": true,
-        "d3": true
+    "Plottable": true,
+    "d3": true
   },
   "rules": {
     "no-console": 0,

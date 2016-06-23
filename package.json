@@ -16,6 +16,8 @@
     "build:umd.min": "webpack --output-filename react-plottable.umd.min.js --output-path dist --config webpack.config.prod.babel.js -p",
     "build:dev": "npm run build:main && npm run build:test",
     "babel:src": "babel src --out-dir lib && babel ReactPlottable --out-dir lib-react",
+    "clean": "rimraf lib lib-react",
+    "prepublish": "npm-run-all clean --parallel babel:src build:umd build:umd.min",
     "test": "mocha-phantomjs ./test/tests.html",
     "lint": "eslint src"
   },

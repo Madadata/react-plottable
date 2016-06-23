@@ -1,9 +1,0 @@
-machie:
-  node:
-    version: 5.10.1
-
-test:
-  pre:
-    - npm run lint
-  post:
-    - npm run coverage
